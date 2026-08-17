@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-17T11:12:00.818Z",
+  "project": {
+    "id": "9b839204-5c59-4e64-b1f0-f8c3b30f719f",
+    "name": "EvolveOS",
+    "slug": "evolveos",
+    "repositoryPath": "/Users/julianvandijk/EvolveOS",
+    "repositoryUrl": "https://github.com/KenAijmNight/EvolveOS"
+  },
+  "worklogBuddy": {
+    "mcpServer": "worklog-buddy-second-brain",
+    "requiredRuntimeEnv": [
+      "SUPABASE_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "tools": [
+      "get_workspace_status",
+      "list_projects",
+      "worklogger_get_project",
+      "worklogger_get_project_summary",
+      "get_project_snapshot",
+      "worklogger_ensure_project_manifest",
+      "create_project",
+      "update_project",
+      "worklogger_upsert_category",
+      "list_tasks",
+      "get_open_tasks",
+      "create_task",
+      "worklogger_create_todo",
+      "update_task",
+      "update_task_status",
+      "complete_task",
+      "block_task",
+      "list_worklogs",
+      "get_worklog",
+      "create_work_log",
+      "worklogger_create_worklog",
+      "update_worklog",
+      "link_worklog_to_todos",
+      "worklogger_create_milestone",
+      "get_milestone_detail",
+      "link_todo_to_milestone",
+      "unlink_todo_from_milestone",
+      "link_worklog_to_milestone",
+      "unlink_worklog_from_milestone",
+      "list_insights",
+      "create_insight",
+      "update_insight",
+      "connect_insights",
+      "delete_insight_connection",
+      "get_due_insight_reminders",
+      "create_activity_event",
+      "get_recent_activity",
+      "start_agent_session",
+      "finish_agent_session",
+      "log_agent_decision"
+    ]
+  },
+  "secondBrain": {
+    "tools": [
+      "search_project_memory",
+      "search_terms",
+      "apply_term",
+      "get_project_context",
+      "create_knowledge_card",
+      "create_term",
+      "update_knowledge_card",
+      "archive_knowledge_card",
+      "list_recent_terms",
+      "list_import_drafts",
+      "accept_import_draft",
+      "extract_import_drafts",
+      "export_terms",
+      "import_terms_json"
+    ]
+  },
+  "capabilities": {
+    "projectContext": {
+      "description": "Discover one local project and load its current execution context.",
+      "tools": [
+        "get_workspace_status",
+        "list_projects",
+        "worklogger_get_project",
+        "worklogger_get_project_summary",
+        "get_project_snapshot",
+        "worklogger_ensure_project_manifest"
+      ]
+    },
+    "projectAdmin": {
+      "description": "Create or update Worklog Buddy projects and categories.",
+      "tools": [
+        "create_project",
+        "update_project",
+        "worklogger_upsert_category"
+      ]
+    },
+    "taskManagement": {
+      "description": "Create, inspect, and move project tasks through agent-friendly statuses.",
+      "tools": [
+        "list_tasks",
+        "get_open_tasks",
+        "create_task",
+        "worklogger_create_todo",
+        "update_task",
+        "update_task_status",
+        "complete_task",
+        "block_task"
+      ]
+    },
+    "timeTracking": {
+      "description": "Read, create, update, and link worklogs.",
+      "tools": [
+        "list_worklogs",
+        "get_worklog",
+        "create_work_log",
+        "worklogger_create_worklog",
+        "update_worklog",
+        "link_worklog_to_todos"
+      ]
+    },
+    "milestones": {
+      "description": "Create milestones and manage milestone associations.",
+      "tools": [
+        "worklogger_create_milestone",
+        "get_milestone_detail",
+        "link_todo_to_milestone",
+        "unlink_todo_from_milestone",
+        "link_worklog_to_milestone",
+        "unlink_worklog_from_milestone"
+      ]
+    },
+    "knowledge": {
+      "description": "Search, apply, import, export, and maintain project knowledge cards.",
+      "tools": [
+        "search_project_memory",
+        "search_terms",
+        "apply_term",
+        "get_project_context",
+        "create_knowledge_card",
+        "create_term",
+        "update_knowledge_card",
+        "archive_knowledge_card",
+        "list_recent_terms",
+        "list_import_drafts",
+        "accept_import_draft",
+        "extract_import_drafts",
+        "export_terms",
+        "import_terms_json"
+      ]
+    },
+    "insights": {
+      "description": "Capture, update, connect, and review project insights.",
+      "tools": [
+        "list_insights",
+        "create_insight",
+        "update_insight",
+        "connect_insights",
+        "delete_insight_connection",
+        "get_due_insight_reminders"
+      ]
+    },
+    "agentWorkflow": {
+      "description": "Record agent sessions, decisions, activity, and completion summaries.",
+      "tools": [
+        "create_activity_event",
+        "get_recent_activity",
+        "start_agent_session",
+        "finish_agent_session",
+        "log_agent_decision"
+      ]
+    }
+  },
+  "safety": {
+    "requiresConfirmation": [
+      "archive_knowledge_card",
+      "delete_insight_connection"
+    ],
+    "neverCommitSecrets": true,
+    "localOnlyRuntime": true
+  },
+  "summary": {
+    "categories": [
+      "Architecture",
+      "CI / Release",
+      "Development",
+      "Documentatie / Second Brain",
+      "Integrations",
+      "Mobile QA",
+      "Product / Scope",
+      "Project hygiene",
+      "Release / Main merge",
+      "Security / Operations",
+      "Supabase data-integriteit",
+      "Testing",
+      "Web QA",
+      "Worklog Buddy setup"
+    ],
+    "counts": {
+      "openTasks": 28,
+      "completedTasks": 2,
+      "milestones": 3,
+      "workLogs": 1,
+      "activityEvents": 4,
+      "knowledgeTerms": 4,
+      "insights": 4
+    }
+  },
+  "notes": "EvolveOS gebruikt Worklog Buddy als project-trackinglaag naast GitHub. Houd productbesluiten, milestones, taken en werklogs hier bij; GitHub blijft de bron voor code, branches, CI en PR's."
+}
