@@ -175,8 +175,8 @@ verbose "Couldn't find MAVEN_HOME, downloading and installing it ..."
 verbose "Downloading from: $distributionUrl"
 verbose "Downloading to: $TMP_DOWNLOAD_DIR/$distributionUrlName"
 
-# select .zip or .tar.gz
-if ! command -v unzip >/dev/null; then
+# select .zip or .tar.gz; a JDK's jar command can extract ZIP files
+if ! command -v unzip >/dev/null && ! command -v jar >/dev/null; then
   distributionUrl="${distributionUrl%.zip}.tar.gz"
   distributionUrlName="${distributionUrl##*/}"
 fi
@@ -249,9 +249,16 @@ if [ -n "${distributionSha256Sum-}" ]; then
   fi
 fi
 
-# unzip and move
+# extract and move
+extractedWithJar=false
 if command -v unzip >/dev/null; then
   unzip ${__MVNW_QUIET_UNZIP:+"$__MVNW_QUIET_UNZIP"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -d "$TMP_DOWNLOAD_DIR" || die "failed to unzip"
+elif command -v jar >/dev/null; then
+  (
+    cd "$TMP_DOWNLOAD_DIR" || exit 1
+    jar xf "$distributionUrlName"
+  ) || die "failed to extract zip with jar"
+  extractedWithJar=true
 else
   tar xzf${__MVNW_QUIET_TAR:+"$__MVNW_QUIET_TAR"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -C "$TMP_DOWNLOAD_DIR" || die "failed to untar"
 fi
@@ -285,6 +292,10 @@ if [ -z "$actualDistributionDir" ]; then
   verbose "Contents of $TMP_DOWNLOAD_DIR:"
   verbose "$(ls -la "$TMP_DOWNLOAD_DIR")"
   die "Could not find Maven distribution directory in extracted archive"
+fi
+
+if [ "$extractedWithJar" = true ]; then
+  chmod +x "$TMP_DOWNLOAD_DIR/$actualDistributionDir/bin/$MVN_CMD" || die "failed to make Maven executable"
 fi
 
 verbose "Found extracted Maven distribution directory: $actualDistributionDir"

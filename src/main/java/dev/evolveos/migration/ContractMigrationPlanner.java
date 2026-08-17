@@ -2,8 +2,6 @@ package dev.evolveos.migration;
 
 import dev.evolveos.contract.SkillContract;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
@@ -39,13 +37,13 @@ public final class ContractMigrationPlanner {
     private Set<String> difference(Set<String> left, Set<String> right) {
         var values = new TreeSet<>(left);
         values.removeAll(right);
-        return Collections.unmodifiableSet(new LinkedHashSet<>(values));
+        return values;
     }
 
     private boolean isBlocking(MigrationStage stage) {
         return switch (stage) {
             case VERIFY, CONTRACT, RETIRED -> true;
-            default -> false;
+            case DRAFT, EXPAND, DUAL_RUN, BACKFILL, CANARY -> false;
         };
     }
 

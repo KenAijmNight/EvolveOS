@@ -119,7 +119,7 @@ These are intentionally deferred until the contract and safety model has earned 
 
 ## Project tracking
 
-GitHub is the source of truth for code, commits, CI, branches, and pull requests. Product decisions, milestones, worklogs, and project knowledge are tracked separately in Worklog Buddy. The discovery contract is committed as [`worklogger_secondbrain.json`](worklogger_secondbrain.json); it contains tool metadata and environment-variable names, never secret values.
+GitHub is the source of truth for code, commits, CI, branches, and pull requests. Product decisions, milestones, worklogs, and project knowledge are tracked separately in Worklog Buddy. The discovery contract is committed as [`worklogger_secondbrain.json`](worklogger_secondbrain.json); it contains tool metadata and environment-variable names, never secret values. Its absolute repository path is maintainer-specific and should be regenerated for a different local checkout.
 
 ## Contributing
 

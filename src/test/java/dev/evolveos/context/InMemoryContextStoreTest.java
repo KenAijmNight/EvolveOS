@@ -12,10 +12,11 @@ class InMemoryContextStoreTest {
     void searchesTitlesBodiesAndTagsCaseInsensitivelyInInsertionOrder() {
         var store = new InMemoryContextStore();
         var first = new ContextItem("task-1", "Ship release", "Blocked by CI", Set.of("urgent"));
-        var second = new ContextItem("task-2", "Write docs", "Document the demo", Set.of("docs"));
+        var second = new ContextItem("task-2", "Write docs", "Document the release demo", Set.of("docs"));
         store.add(first);
         store.add(second);
 
+        assertEquals(java.util.List.of(first, second), store.search("RELEASE"));
         assertEquals(java.util.List.of(first), store.search("URGENT"));
         assertEquals(java.util.List.of(first), store.search("blocked"));
         assertEquals(java.util.List.of(second), store.search("write"));
