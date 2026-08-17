@@ -1,5 +1,7 @@
 # EvolveOS
 
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/KenAijmNight/EvolveOS?utm_source=oss&utm_medium=github&utm_campaign=KenAijmNight%2FEvolveOS&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+
 **Safely evolve AI workflow contracts.**
 
 EvolveOS is an experimental Java control plane for AI workflows. The v0.1 reference implementation runs entirely locally and focuses on the part most agent frameworks leave until later: changing skills, permissions, outputs, and approval boundaries without silently breaking existing consumers.
