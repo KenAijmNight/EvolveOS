@@ -26,6 +26,10 @@ A pull request should explain:
 
 Do not add real credentials, customer data, private exports, or generated local databases. External side effects must remain behind an explicit proposal and approval boundary.
 
+## Language
+
+English is the only project language. Use English for code comments, documentation, issue and pull-request text, commit messages, release notes, Worklog Buddy project records, research notes, and content drafts. User-facing localization may be added later as an explicit product feature, but the canonical project source remains English.
+
 ## Code style
 
 - target Java 21;

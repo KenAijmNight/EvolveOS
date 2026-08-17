@@ -184,14 +184,14 @@
       "Architecture",
       "CI / Release",
       "Development",
-      "Documentatie / Second Brain",
+      "Documentation / Second Brain",
       "Integrations",
       "Mobile QA",
       "Product / Scope",
       "Project hygiene",
       "Release / Main merge",
       "Security / Operations",
-      "Supabase data-integriteit",
+      "Supabase Data Integrity",
       "Testing",
       "Web QA",
       "Worklog Buddy setup"
@@ -206,5 +206,5 @@
       "insights": 4
     }
   },
-  "notes": "EvolveOS gebruikt Worklog Buddy als project-trackinglaag naast GitHub. Houd productbesluiten, milestones, taken en werklogs hier bij; GitHub blijft de bron voor code, branches, CI en PR's."
+  "notes": "EvolveOS uses Worklog Buddy as its project tracking layer alongside GitHub. Record product decisions, milestones, tasks, and worklogs here; GitHub remains the source of truth for code, branches, CI, and pull requests."
 }
