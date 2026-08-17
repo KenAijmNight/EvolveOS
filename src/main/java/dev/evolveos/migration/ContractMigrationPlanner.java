@@ -31,7 +31,9 @@ public final class ContractMigrationPlanner {
                 steps,
                 difference(to.outputFields(), from.outputFields()),
                 difference(from.outputFields(), to.outputFields()),
-                difference(to.permissions(), from.permissions()));
+                difference(to.permissions(), from.permissions()),
+                difference(to.requiredInputs(), from.requiredInputs()),
+                from.approvalRequired() && !to.approvalRequired());
     }
 
     private Set<String> difference(Set<String> left, Set<String> right) {

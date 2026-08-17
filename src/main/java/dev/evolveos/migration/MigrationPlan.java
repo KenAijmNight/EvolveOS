@@ -11,7 +11,9 @@ public record MigrationPlan(
         List<MigrationStep> steps,
         Set<String> addedOutputFields,
         Set<String> removedOutputFields,
-        Set<String> addedPermissions) {
+        Set<String> addedPermissions,
+        Set<String> addedRequiredInputs,
+        boolean approvalRequirementRemoved) {
 
     public MigrationPlan {
         if (skillName == null || skillName.isBlank()) {
@@ -24,11 +26,15 @@ public record MigrationPlan(
         addedOutputFields = Set.copyOf(Objects.requireNonNull(addedOutputFields, "addedOutputFields"));
         removedOutputFields = Set.copyOf(Objects.requireNonNull(removedOutputFields, "removedOutputFields"));
         addedPermissions = Set.copyOf(Objects.requireNonNull(addedPermissions, "addedPermissions"));
+        addedRequiredInputs = Set.copyOf(
+                Objects.requireNonNull(addedRequiredInputs, "addedRequiredInputs"));
     }
 
     public boolean requiresVerification() {
         return !addedOutputFields.isEmpty()
                 || !removedOutputFields.isEmpty()
-                || !addedPermissions.isEmpty();
+                || !addedPermissions.isEmpty()
+                || !addedRequiredInputs.isEmpty()
+                || approvalRequirementRemoved;
     }
 }

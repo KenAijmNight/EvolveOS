@@ -32,6 +32,22 @@ class ContractMigrationPlannerTest {
     }
 
     @Test
+    void reportsNewRequiredInputsAndAWeakenedApprovalBoundary() {
+        var v1 = new SkillContract(
+                "morning-review", 1, Set.of("context"),
+                Set.of("priority"), Set.of("tasks:write"), true);
+        var v2 = new SkillContract(
+                "morning-review", 2, Set.of("context", "calendar"),
+                Set.of("priority"), Set.of("tasks:write"), false);
+
+        var plan = new ContractMigrationPlanner().plan(v1, v2);
+
+        assertEquals(Set.of("calendar"), plan.addedRequiredInputs());
+        assertTrue(plan.approvalRequirementRemoved());
+        assertTrue(plan.requiresVerification());
+    }
+
+    @Test
     void rejectsCrossSkillAndNonForwardMigrations() {
         var v1 = contract("morning-review", 1);
 

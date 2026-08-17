@@ -32,8 +32,8 @@ public final class Proposal {
         }
         this.skillVersion = skillVersion;
         this.summary = requireText(summary, "summary");
-        if (confidence < 0.0 || confidence > 1.0) {
-            throw new IllegalArgumentException("confidence must be between 0 and 1");
+        if (!Double.isFinite(confidence) || confidence < 0.0 || confidence > 1.0) {
+            throw new IllegalArgumentException("confidence must be finite and between 0 and 1");
         }
         this.confidence = confidence;
         this.evidence = List.copyOf(Objects.requireNonNull(evidence, "evidence"));

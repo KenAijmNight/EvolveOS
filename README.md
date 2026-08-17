@@ -48,7 +48,7 @@ Included:
 - a complete eight-stage expand-contract migration planner;
 - a sequenced append-only event log;
 - a runnable CLI demo;
-- 14 unit and integration tests;
+- 16 unit and integration tests;
 - GitHub Actions CI on Java 21.
 
 ## Quickstart
@@ -87,7 +87,7 @@ Audit events: 6
 2. **Terminal rejection** — a rejected proposal cannot later be approved or executed.
 3. **Forward-only migrations** — a migration must keep the same skill identity and increase its version.
 4. **Safe compatibility** — removing outputs, adding required inputs, adding permissions, or weakening an approval requirement is breaking.
-5. **Verification before retirement** — the old contract is not retired until the verification stages pass.
+5. **Modeled retirement gate** — plans place retirement after verification and mark verification, contract, and retirement as blocking; v0.1 does not execute migration stages.
 6. **Deterministic auditability** — every accepted context item, proposal transition, and migration plan receives a monotonically increasing event sequence.
 
 ## Project structure

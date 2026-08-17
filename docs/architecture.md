@@ -28,7 +28,7 @@ A skill contract has a stable name and monotonically increasing version. The com
 - does not add permissions;
 - does not remove an existing approval requirement.
 
-A breaking contract can still be introduced, but it must use an explicit migration plan.
+A breaking contract can still be introduced, but it must use an explicit migration plan. The plan reports added and removed outputs, added permissions, added required inputs, and removal of an approval requirement.
 
 ### Proposal lifecycle
 
@@ -53,7 +53,7 @@ No other state transition is valid. In v0.1 `EXECUTED` means the proposal crosse
 7. **CONTRACT** — make the new version the default while retaining rollback.
 8. **RETIRED** — remove the old version only after verification.
 
-`VERIFY`, `CONTRACT`, and `RETIRED` are represented as blocking gates.
+`VERIFY`, `CONTRACT`, and `RETIRED` are represented as blocking gates. The v0.1 planner is descriptive: it does not deploy versions, run backfills, advance stages, or retire a contract.
 
 ### Audit log
 

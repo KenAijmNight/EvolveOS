@@ -34,6 +34,19 @@ class ProposalTest {
     }
 
     @Test
+    void rejectsNonFiniteConfidence() {
+        assertThrows(IllegalArgumentException.class, () -> Proposal.draft(
+                "proposal-task-1",
+                "morning-review",
+                1,
+                "Prioritize task 1",
+                Double.NaN,
+                List.of("context:task-1"),
+                "Mark task-1 as high priority",
+                Set.of("tasks:write")));
+    }
+
+    @Test
     void aNewProposalAlwaysStartsAsDraft() {
         assertEquals(ProposalStatus.DRAFT, draft().status());
     }
