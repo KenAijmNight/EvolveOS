@@ -48,7 +48,7 @@ Included:
 - a complete eight-stage expand-contract migration planner;
 - a sequenced append-only event log;
 - a runnable CLI demo;
-- 13 unit and integration tests;
+- 14 unit and integration tests;
 - GitHub Actions CI on Java 21.
 
 ## Quickstart

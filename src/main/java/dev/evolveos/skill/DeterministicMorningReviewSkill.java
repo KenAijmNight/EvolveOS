@@ -3,7 +3,6 @@ package dev.evolveos.skill;
 import dev.evolveos.context.ContextItem;
 import dev.evolveos.contract.SkillContract;
 import dev.evolveos.proposal.Proposal;
-import dev.evolveos.proposal.ProposalStatus;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -55,7 +54,7 @@ public final class DeterministicMorningReviewSkill {
             evidence.add("title:" + selected.title());
         }
 
-        return new Proposal(
+        return Proposal.draft(
                 "proposal-" + selected.id(),
                 contractV1().name(),
                 contractV1().version(),
@@ -63,8 +62,7 @@ public final class DeterministicMorningReviewSkill {
                 confidence(selected),
                 evidence,
                 "Mark " + selected.id() + " as high priority",
-                contractV1().permissions(),
-                ProposalStatus.DRAFT);
+                contractV1().permissions());
     }
 
     private int score(ContextItem item) {

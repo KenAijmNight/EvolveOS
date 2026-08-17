@@ -33,8 +33,13 @@ class ProposalTest {
         assertThrows(IllegalStateException.class, rejected::execute);
     }
 
+    @Test
+    void aNewProposalAlwaysStartsAsDraft() {
+        assertEquals(ProposalStatus.DRAFT, draft().status());
+    }
+
     private Proposal draft() {
-        return new Proposal(
+        return Proposal.draft(
                 "proposal-task-1",
                 "morning-review",
                 1,
@@ -42,7 +47,6 @@ class ProposalTest {
                 0.91,
                 List.of("context:task-1", "tag:urgent"),
                 "Mark task-1 as high priority",
-                Set.of("tasks:write"),
-                ProposalStatus.DRAFT);
+                Set.of("tasks:write"));
     }
 }

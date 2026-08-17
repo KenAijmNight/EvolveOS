@@ -4,34 +4,96 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public record Proposal(
-        String id,
-        String skillName,
-        int skillVersion,
-        String summary,
-        double confidence,
-        List<String> evidence,
-        String proposedAction,
-        Set<String> requiredPermissions,
-        ProposalStatus status) {
+public final class Proposal {
+    private final String id;
+    private final String skillName;
+    private final int skillVersion;
+    private final String summary;
+    private final double confidence;
+    private final List<String> evidence;
+    private final String proposedAction;
+    private final Set<String> requiredPermissions;
+    private final ProposalStatus status;
 
-    public Proposal {
-        id = requireText(id, "id");
-        skillName = requireText(skillName, "skillName");
+    private Proposal(
+            String id,
+            String skillName,
+            int skillVersion,
+            String summary,
+            double confidence,
+            List<String> evidence,
+            String proposedAction,
+            Set<String> requiredPermissions,
+            ProposalStatus status) {
+        this.id = requireText(id, "id");
+        this.skillName = requireText(skillName, "skillName");
         if (skillVersion < 1) {
             throw new IllegalArgumentException("skillVersion must be at least 1");
         }
-        summary = requireText(summary, "summary");
+        this.skillVersion = skillVersion;
+        this.summary = requireText(summary, "summary");
         if (confidence < 0.0 || confidence > 1.0) {
             throw new IllegalArgumentException("confidence must be between 0 and 1");
         }
-        evidence = List.copyOf(Objects.requireNonNull(evidence, "evidence"));
-        if (evidence.isEmpty()) {
+        this.confidence = confidence;
+        this.evidence = List.copyOf(Objects.requireNonNull(evidence, "evidence"));
+        if (this.evidence.isEmpty()) {
             throw new IllegalArgumentException("evidence must not be empty");
         }
-        proposedAction = requireText(proposedAction, "proposedAction");
-        requiredPermissions = Set.copyOf(Objects.requireNonNull(requiredPermissions, "requiredPermissions"));
-        status = Objects.requireNonNull(status, "status");
+        this.proposedAction = requireText(proposedAction, "proposedAction");
+        this.requiredPermissions = Set.copyOf(
+                Objects.requireNonNull(requiredPermissions, "requiredPermissions"));
+        this.status = Objects.requireNonNull(status, "status");
+    }
+
+    public static Proposal draft(
+            String id,
+            String skillName,
+            int skillVersion,
+            String summary,
+            double confidence,
+            List<String> evidence,
+            String proposedAction,
+            Set<String> requiredPermissions) {
+        return new Proposal(
+                id, skillName, skillVersion, summary, confidence, evidence,
+                proposedAction, requiredPermissions, ProposalStatus.DRAFT);
+    }
+
+    public String id() {
+        return id;
+    }
+
+    public String skillName() {
+        return skillName;
+    }
+
+    public int skillVersion() {
+        return skillVersion;
+    }
+
+    public String summary() {
+        return summary;
+    }
+
+    public double confidence() {
+        return confidence;
+    }
+
+    public List<String> evidence() {
+        return evidence;
+    }
+
+    public String proposedAction() {
+        return proposedAction;
+    }
+
+    public Set<String> requiredPermissions() {
+        return requiredPermissions;
+    }
+
+    public ProposalStatus status() {
+        return status;
     }
 
     public Proposal approve() {
